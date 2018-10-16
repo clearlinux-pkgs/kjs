@@ -5,19 +5,19 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kjs
-Version  : 5.50.0
-Release  : 5
-URL      : https://download.kde.org/stable/frameworks/5.50/portingAids/kjs-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/portingAids/kjs-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/portingAids/kjs-5.50.0.tar.xz.sig
+Version  : 5.51.0
+Release  : 6
+URL      : https://download.kde.org/stable/frameworks/5.51/portingAids/kjs-5.51.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.51/portingAids/kjs-5.51.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.51/portingAids/kjs-5.51.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: kjs-bin
-Requires: kjs-lib
-Requires: kjs-license
-Requires: kjs-data
-Requires: kjs-man
+Requires: kjs-bin = %{version}-%{release}
+Requires: kjs-data = %{version}-%{release}
+Requires: kjs-lib = %{version}-%{release}
+Requires: kjs-license = %{version}-%{release}
+Requires: kjs-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : buildreq-qmake
@@ -33,9 +33,9 @@ Microsoft's JScript.
 %package bin
 Summary: bin components for the kjs package.
 Group: Binaries
-Requires: kjs-data
-Requires: kjs-license
-Requires: kjs-man
+Requires: kjs-data = %{version}-%{release}
+Requires: kjs-license = %{version}-%{release}
+Requires: kjs-man = %{version}-%{release}
 
 %description bin
 bin components for the kjs package.
@@ -52,10 +52,10 @@ data components for the kjs package.
 %package dev
 Summary: dev components for the kjs package.
 Group: Development
-Requires: kjs-lib
-Requires: kjs-bin
-Requires: kjs-data
-Provides: kjs-devel
+Requires: kjs-lib = %{version}-%{release}
+Requires: kjs-bin = %{version}-%{release}
+Requires: kjs-data = %{version}-%{release}
+Provides: kjs-devel = %{version}-%{release}
 
 %description dev
 dev components for the kjs package.
@@ -64,8 +64,8 @@ dev components for the kjs package.
 %package lib
 Summary: lib components for the kjs package.
 Group: Libraries
-Requires: kjs-data
-Requires: kjs-license
+Requires: kjs-data = %{version}-%{release}
+Requires: kjs-license = %{version}-%{release}
 
 %description lib
 lib components for the kjs package.
@@ -88,25 +88,25 @@ man components for the kjs package.
 
 
 %prep
-%setup -q -n kjs-5.50.0
+%setup -q -n kjs-5.51.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536431197
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1539701253
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536431197
+export SOURCE_DATE_EPOCH=1539701253
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kjs
-cp COPYING.LIB %{buildroot}/usr/share/doc/kjs/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/kjs
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kjs/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -229,16 +229,16 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5JS.so.5
-/usr/lib64/libKF5JS.so.5.50.0
+/usr/lib64/libKF5JS.so.5.51.0
 /usr/lib64/libKF5JSApi.so.5
-/usr/lib64/libKF5JSApi.so.5.50.0
+/usr/lib64/libKF5JSApi.so.5.51.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kjs/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kjs/COPYING.LIB
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/ca/man1/kjs5.1
 /usr/share/man/de/man1/kjs5.1
 /usr/share/man/es/man1/kjs5.1
