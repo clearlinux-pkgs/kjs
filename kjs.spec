@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kjs
-Version  : 5.51.0
-Release  : 7
-URL      : https://download.kde.org/stable/frameworks/5.51/portingAids/kjs-5.51.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.51/portingAids/kjs-5.51.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.51/portingAids/kjs-5.51.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 5.55.0
+Release  : 8
+URL      : https://download.kde.org/stable/frameworks/5.55/portingAids/kjs-5.55.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.55/portingAids/kjs-5.55.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.55/portingAids/kjs-5.55.0.tar.xz.sig
+Summary  : Support for JS scripting in applications
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: kjs-bin = %{version}-%{release}
@@ -88,22 +88,22 @@ man components for the kjs package.
 
 
 %prep
-%setup -q -n kjs-5.51.0
+%setup -q -n kjs-5.55.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539702400
+export SOURCE_DATE_EPOCH=1549729251
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539702400
+export SOURCE_DATE_EPOCH=1549729251
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kjs
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kjs/COPYING.LIB
@@ -229,9 +229,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5JS.so.5
-/usr/lib64/libKF5JS.so.5.51.0
+/usr/lib64/libKF5JS.so.5.55.0
 /usr/lib64/libKF5JSApi.so.5
-/usr/lib64/libKF5JSApi.so.5.51.0
+/usr/lib64/libKF5JSApi.so.5.55.0
 
 %files license
 %defattr(0644,root,root,0755)
