@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kjs
-Version  : 5.57.0
-Release  : 14
-URL      : https://download.kde.org/stable/frameworks/5.57/portingAids/kjs-5.57.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.57/portingAids/kjs-5.57.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.57/portingAids/kjs-5.57.0.tar.xz.sig
+Version  : 5.58.0
+Release  : 15
+URL      : https://download.kde.org/stable/frameworks/5.58/portingAids/kjs-5.58.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.58/portingAids/kjs-5.58.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.58/portingAids/kjs-5.58.0.tar.xz.sig
 Summary  : Support for JS scripting in applications
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -56,6 +56,7 @@ Requires: kjs-bin = %{version}-%{release}
 Requires: kjs-data = %{version}-%{release}
 Provides: kjs-devel = %{version}-%{release}
 Requires: kjs = %{version}-%{release}
+Requires: kjs = %{version}-%{release}
 
 %description dev
 dev components for the kjs package.
@@ -88,14 +89,14 @@ man components for the kjs package.
 
 
 %prep
-%setup -q -n kjs-5.57.0
+%setup -q -n kjs-5.58.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557020720
+export SOURCE_DATE_EPOCH=1557769026
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -110,7 +111,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557020720
+export SOURCE_DATE_EPOCH=1557769026
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kjs
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kjs/COPYING.LIB
@@ -236,9 +237,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5JS.so.5
-/usr/lib64/libKF5JS.so.5.57.0
+/usr/lib64/libKF5JS.so.5.58.0
 /usr/lib64/libKF5JSApi.so.5
-/usr/lib64/libKF5JSApi.so.5.57.0
+/usr/lib64/libKF5JSApi.so.5.58.0
 
 %files license
 %defattr(0644,root,root,0755)
