@@ -6,7 +6,7 @@
 #
 Name     : kjs
 Version  : 5.70.0
-Release  : 27
+Release  : 28
 URL      : https://download.kde.org/stable/frameworks/5.70/portingAids/kjs-5.70.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.70/portingAids/kjs-5.70.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.70/portingAids/kjs-5.70.0.tar.xz.sig
@@ -99,7 +99,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589214976
+export SOURCE_DATE_EPOCH=1589215235
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -115,7 +115,7 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1589214976
+export SOURCE_DATE_EPOCH=1589215235
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kjs
 cp %{_builddir}/kjs-5.70.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kjs/9a1929f4700d2407c70b507b3b2aaf6226a9543c
