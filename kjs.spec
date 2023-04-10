@@ -6,11 +6,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kjs
-Version  : 5.104.0
-Release  : 58
-URL      : https://download.kde.org/stable/frameworks/5.104/portingAids/kjs-5.104.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.104/portingAids/kjs-5.104.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.104/portingAids/kjs-5.104.0.tar.xz.sig
+Version  : 5.105.0
+Release  : 59
+URL      : https://download.kde.org/stable/frameworks/5.105/portingAids/kjs-5.105.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.105/portingAids/kjs-5.105.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.105/portingAids/kjs-5.105.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -21,7 +21,6 @@ Requires: kjs-license = %{version}-%{release}
 Requires: kjs-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : buildreq-qmake
 BuildRequires : extra-cmake-modules-data
 BuildRequires : kdoctools-dev
 BuildRequires : perl
@@ -95,15 +94,15 @@ man components for the kjs package.
 
 
 %prep
-%setup -q -n kjs-5.104.0
-cd %{_builddir}/kjs-5.104.0
+%setup -q -n kjs-5.105.0
+cd %{_builddir}/kjs-5.105.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1679582440
+export SOURCE_DATE_EPOCH=1681137882
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -119,7 +118,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1679582440
+export SOURCE_DATE_EPOCH=1681137882
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kjs
 cp %{_builddir}/kjs-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/kjs/9a1929f4700d2407c70b507b3b2aaf6226a9543c || :
@@ -245,9 +244,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5JS.so.5
-/usr/lib64/libKF5JS.so.5.104.0
+/usr/lib64/libKF5JS.so.5.105.0
 /usr/lib64/libKF5JSApi.so.5
-/usr/lib64/libKF5JSApi.so.5.104.0
+/usr/lib64/libKF5JSApi.so.5.105.0
 
 %files license
 %defattr(0644,root,root,0755)
